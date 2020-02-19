@@ -7,13 +7,12 @@ class PigLatinizer
   end
 
   def convert_word(word)
-    if /[aeiou]/i.match(word[0])
-      "#{word}way"
-    else
-      arr = word.scan(/[^aeiou]+/)
-      start = arr[0]
+    if ans = /^[^aeiou]+/i.match(word)
+      start = ans.to_s
       word.slice!(0,start.length)
       word + start + 'ay'
+    else
+      "#{word}way"
     end
   end
 
